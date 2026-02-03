@@ -35,3 +35,29 @@ SELECT min(Win_Margin),max(Win_Margin)
 FROM Match;
 """,conn)
 print (min_max)
+
+min_max = pd.read_sql ("""
+SELECT *
+FROM Team
+WHERE Team_Name LIKE "E%";
+""",conn)
+
+players_data = pd.read_sql("""
+SELECT *
+FROM Player
+ORDER BY DOB DESC;
+""", conn)
+print (players_data)
+
+players_count = pd.read_sql("""
+SELECT COUNT (Player_Id),Country_Name
+FROM Player 
+GROUP BY Country_Name;
+""", conn)
+print (players_count)
+
+result = pd.read_sql("""
+SELECT SUM (Extra_Runs)
+FROM Extra_Runs;
+""",conn)
+print (result)
