@@ -61,3 +61,21 @@ SELECT SUM (Extra_Runs)
 FROM Extra_Runs;
 """,conn)
 print (result)
+
+Join_city = pd.read_sql("""
+SELECT c.Country_Id,c.Country_Name,ci.City_Name
+FROM Country c
+INNER JOIN City ci
+ON c.Country_Id == ci.Country_id;
+""",conn)
+
+print (Join_city)
+
+Left_Join = pd.read_sql("""
+SELECT *
+FROM Player
+LEFT JOIN Season
+ON Player.player_id == Season.Man_of_the_Series;
+""",conn)
+
+print (Left_Join)
