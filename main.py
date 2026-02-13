@@ -79,3 +79,12 @@ ON Player.player_id == Season.Man_of_the_Series;
 """,conn)
 
 print (Left_Join)
+
+CSK_Matches_2015 = pd.read_sql("""
+SELECT Match_Id,Team_2 as Away_team,Match_Winner
+FROM Match
+WHERE Team_1 =
+(SELECT Team_1 FROM Match WHERE Team_1 == 3 AND Season_Id == 8);
+""",conn)
+
+print (CSK_Matches_2015)
